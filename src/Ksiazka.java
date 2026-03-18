@@ -11,10 +11,30 @@ public class Ksiazka {
         this.dostepna = dostepna;
     }
 
-    public void printInfo() {
+    public void wypiszInfo() {
         System.out.println("Tytuł: " + this.tytul);
         System.out.println("Autor: " + this.autor);
         System.out.println("Liczba stron: " + this.LiczbaStron);
         System.out.println("Dostępna: " + this.dostepna);
     }
+
+    public void wypozycz() {
+        if (dostepna) {
+            dostepna = false;
+            System.out.println("Książka została wypożyczona.");
+        } else {
+            System.out.println("Książka jest już wypożyczona.");
+        }
+    }
+
+    public void zwroc() {
+        if (!dostepna) {
+            dostepna = true;
+            System.out.println("Książka została zwrócona.");
+        } else {
+            System.out.println("Książka była już dostępna.");
+        }
+    }
 }
+
+
