@@ -28,12 +28,20 @@ public class Ksiazka {
     }
 
     public void zwroc() {
-        if (!dostepna) {
-            dostepna = true;
-            System.out.println("Książka została zwrócona.");
-        } else {
-            System.out.println("Książka była już dostępna.");
-        }
+        dostepna = true;
+        System.out.println(tytul + " została zwrócona.");
+    }
+
+    public boolean isDostepna() {
+        return dostepna;
+    }
+
+    public String getTytul() {
+        return tytul;
+    }
+
+    public String getAutor() {
+        return autor;
     }
 }
 

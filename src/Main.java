@@ -3,6 +3,8 @@
 public class Main {
     public static void main(String[] args) {
         Ksiazka harryPotter = new Ksiazka( "Harry Potter", "J.K. Rowling", 300, true);
+        Ksiazka wiedzmin = new Ksiazka("Wiedźmin", "Andrzej Sapkowski", 350, true);
+        Ksiazka hobbit = new Ksiazka("Hobbit", "J.R.R. Tolkien", 250, true);
 
            harryPotter.wypiszInfo();
            harryPotter.wypozycz();
@@ -13,5 +15,18 @@ public class Main {
         Czytelnik janKowalski=new Czytelnik("Jan","Kowalski", 445,4);
         janKowalski.printInfo();
 
+        Biblioteka biblioteka = new Biblioteka(10);
+        biblioteka.dodajKsiazke(harryPotter);
+        biblioteka.dodajKsiazke(wiedzmin);
+        biblioteka.dodajKsiazke(hobbit);
+
+        biblioteka.wypiszDostepneKsiazki();
+
+        Ksiazka szukana = biblioteka.znajdzKsiazkePoTytule("Hobbit");
+        if (szukana != null) {
+            System.out.println("Znaleziono książkę: " + szukana.getTytul());
+        }
+
+        System.out.println("Dostępne książki: " + biblioteka.policzDostepneKsiazki());
     }
 }
