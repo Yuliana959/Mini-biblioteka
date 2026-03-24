@@ -12,8 +12,8 @@ public class Main {
            harryPotter.zwroc();
            harryPotter.wypiszInfo();
 
-        Czytelnik janKowalski=new Czytelnik("Jan","Kowalski", 445,4);
-        janKowalski.printInfo();
+        Czytelnik anna = new Czytelnik("Anna", "Kowalska", 101, 0);
+        Czytelnik jan = new Czytelnik("Jan", "Nowak", 102, 0);
 
         Biblioteka biblioteka = new Biblioteka(10);
         biblioteka.dodajKsiazke(harryPotter);
@@ -28,5 +28,20 @@ public class Main {
         }
 
         System.out.println("Dostępne książki: " + biblioteka.policzDostepneKsiazki());
+
+        System.out.println("\n=== Wypożyczenie książek ===");
+        biblioteka.wypozyczKsiazke("Hobbit", anna);
+        biblioteka.wypozyczKsiazke("Harry Potter", jan);
+
+        System.out.println("\n=== Dostępne książki po wypożyczeniu ===");
+        biblioteka.wypiszDostepneKsiazki();
+
+        System.out.println("\n=== Zwrot książek ===");
+        biblioteka.zwrocKsiazke("Hobbit", anna);
+
+        System.out.println("\n=== Dostępne książki po zwrocie ===");
+        biblioteka.wypiszDostepneKsiazki();
+
+
     }
 }

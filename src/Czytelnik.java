@@ -19,4 +19,12 @@ public class Czytelnik {
 
 
     }
+
+    public void zwiekszLiczbeWypozyczen() {
+        liczbaWypozyczen++;
+    }
+
+    public void zmniejszLiczbeWypozyczen() {
+        liczbaWypozyczen--;
+    }
 }

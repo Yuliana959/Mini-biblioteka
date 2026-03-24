@@ -2,13 +2,13 @@ public class Biblioteka {
     private Ksiazka[] ksiazki;
     private int liczbaKsiazek;
 
-    // Konstruktor przyjmujący maksymalny rozmiar tablicy
+
     public Biblioteka(int pojemnosc) {
         ksiazki = new Ksiazka[pojemnosc];
         liczbaKsiazek = 0;
     }
 
-    // Dodawanie ksiazki do tablicy
+
     public void dodajKsiazke(Ksiazka ksiazka) {
         if (liczbaKsiazek < ksiazki.length) {
             ksiazki[liczbaKsiazek] = ksiazka;
@@ -18,7 +18,7 @@ public class Biblioteka {
         }
     }
 
-    // Wypisanie dostępnych książek
+
     public void wypiszDostepneKsiazki() {
         System.out.println("Dostępne książki:");
         for (int i = 0; i < liczbaKsiazek; i++) {
@@ -28,17 +28,17 @@ public class Biblioteka {
         }
     }
 
-    // Znalezienie książki po tytule
+
     public Ksiazka znajdzKsiazkePoTytule(String tytul) {
         for (int i = 0; i < liczbaKsiazek; i++) {
             if (ksiazki[i].getTytul().equals(tytul)) {
                 return ksiazki[i];
             }
         }
-        return null; // nie znaleziono
+        return null;
     }
 
-    // Policz dostępne książki
+
     public int policzDostepneKsiazki() {
         int licznik = 0;
         for (int i = 0; i < liczbaKsiazek; i++) {
@@ -47,5 +47,29 @@ public class Biblioteka {
             }
         }
         return licznik;
+    }
+
+    public void wypozyczKsiazke(String tytul, Czytelnik czytelnik) {
+        Ksiazka ksiazka = znajdzKsiazkePoTytule(tytul);
+        if (ksiazka != null && ksiazka.isDostepna()) {
+            ksiazka.wypozycz();
+            czytelnik.zwiekszLiczbeWypozyczen();
+        } else if (ksiazka != null) {
+            System.out.println("Książka jest już wypożyczona.");
+        } else {
+            System.out.println("Nie znaleziono książki o tytule: " + tytul);
+        }
+    }
+
+    public void zwrocKsiazke(String tytul, Czytelnik czytelnik) {
+        Ksiazka ksiazka = znajdzKsiazkePoTytule(tytul);
+        if (ksiazka != null && !ksiazka.isDostepna()) {
+            ksiazka.zwroc();
+            czytelnik.zmniejszLiczbeWypozyczen();
+        } else if (ksiazka != null) {
+            System.out.println("Książka była już dostępna.");
+        } else {
+            System.out.println("Nie znaleziono książki o tytule: " + tytul);
+        }
     }
 }
