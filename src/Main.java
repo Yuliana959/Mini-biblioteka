@@ -9,5 +9,9 @@ public class Main {
            harryPotter.wypiszInfo();
            harryPotter.zwroc();
            harryPotter.wypiszInfo();
+
+        Czytelnik janKowalski=new Czytelnik("Jan","Kowalski", 445,4);
+        janKowalski.printInfo();
+
     }
 }
